@@ -1,6 +1,7 @@
 """
 Image generator using a DCGAN
 Author: Pablo Villanueva Domingo
+Last update: 28/5/2020
 """
 
 import time, datetime, glob, os
@@ -32,7 +33,7 @@ def load_images(datapath, newsize):
 #--- PARAMETERS ---#
 
 # Number of epochs
-n_epochs = 10
+n_epochs = 15000
 # Batch size
 batch_size = 64
 # 1 for loading a previously trained model
@@ -40,14 +41,14 @@ load_prev_model = 0
 # 1 for trainig the network
 train_model = 1
 # Resize the images to save some memory and time (It has to be multiple of 2, otherwise it fails sometimes...)
-newsize = 64
+newsize = 128
 
 #--- MAIN ---#
 
 # Ensure that you are using GPU if available. Otherwise, it will take some time to run
 with tf.device('/GPU:0'):
 
-    # Create some directories to store the outputs and models
+    # Create some directories to store the outputs and models, and unzip the dataset
     if not os.path.isdir("outputs"):
         os.mkdir("outputs")
     if not os.path.isdir("models"):
