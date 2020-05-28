@@ -32,7 +32,7 @@ def load_images(datapath, newsize):
 #--- PARAMETERS ---#
 
 # Number of epochs
-n_epochs = 10000
+n_epochs = 10
 # Batch size
 batch_size = 64
 # 1 for loading a previously trained model
@@ -52,6 +52,8 @@ with tf.device('/GPU:0'):
         os.mkdir("outputs")
     if not os.path.isdir("models"):
         os.mkdir("models")
+    if not os.path.isdir("flower_images"):
+        os.system("unzip flower_images.zip")
 
     # Load the data
     datapath = "flower_images/0*"
